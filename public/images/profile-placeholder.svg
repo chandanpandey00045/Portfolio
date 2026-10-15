@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="720" viewBox="0 0 580 720" role="img" aria-labelledby="title desc">
+<title id="title">Professional photo placeholder</title>
+<desc id="desc">Abstract silhouette placeholder. Replace this file with your own professional portrait.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102b45"/><stop offset="1" stop-color="#070d18"/></linearGradient>
+  <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#20ddf5"/><stop offset="1" stop-color="#4285ff"/></linearGradient>
+  <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#8cb9d9" stroke-opacity=".1"/></pattern>
+</defs>
+<rect width="580" height="720" fill="url(#bg)"/><rect width="580" height="720" fill="url(#grid)"/>
+<circle cx="290" cy="245" r="135" fill="#20ddf5" fill-opacity=".06"/>
+<circle cx="290" cy="245" r="108" fill="none" stroke="url(#glow)" stroke-opacity=".65" stroke-width="2"/>
+<circle cx="290" cy="208" r="58" fill="#9db7ce" fill-opacity=".78"/>
+<path d="M178 375c12-66 58-100 112-100s100 34 112 100v25H178z" fill="#9db7ce" fill-opacity=".78"/>
+<text x="290" y="470" text-anchor="middle" fill="#20ddf5" font-family="monospace" font-size="18" letter-spacing="3">YOUR PHOTO</text>
+<text x="290" y="503" text-anchor="middle" fill="#b6c8da" font-family="Arial, sans-serif" font-size="16">Replace profile-placeholder.svg</text>
+<text x="290" y="530" text-anchor="middle" fill="#7e96ad" font-family="monospace" font-size="13">public/images/</text>
+<path d="M70 610h440" stroke="#20ddf5" stroke-opacity=".28"/>
+<text x="290" y="650" text-anchor="middle" fill="#7e96ad" font-family="monospace" font-size="13">CHANDAN PANDEY · DATA ENGINEER</text>
+</svg>

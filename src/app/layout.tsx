@@ -17,11 +17,30 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Chandan Pandey | Full-Stack Developer & Data Engineer",
   description:
-    "Portfolio of Chandan Pandey — full-stack applications, data engineering, Python, SQL, PySpark, Databricks and Azure.",
+    "Portfolio of Chandan Pandey — Full-Stack Developer and Data Engineer experienced in React, Next.js, Node.js, Python, SQL, PySpark, Azure, and Databricks.",
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/favicon.svg"
+  },
+  keywords: [
+    "Chandan Pandey",
+    "Full-Stack Developer",
+    "Data Engineer",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Python",
+    "PySpark",
+    "Databricks",
+    "Azure",
+    "Portfolio"
+  ],
+  authors: [{ name: "Chandan Pandey" }],
   openGraph: {
     title: "Chandan Pandey | Full-Stack Developer & Data Engineer",
-    description: "Building thoughtful applications and dependable data systems.",
-    type: "website"
+    description: "Building thoughtful full-stack applications and dependable data systems.",
+    type: "website",
+    locale: "en_US"
   }
 };
 

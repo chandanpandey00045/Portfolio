@@ -29,19 +29,19 @@ export default function Navbar() {
               className="object-cover object-top"
             />
           </div>
-          <span>Chandan<span className="text-cyan">.dev</span></span>
+          <span className="text-slate-900">Chandan<span className="text-cyan">.dev</span></span>
         </a>
 
         <nav aria-label="Main navigation" className="hidden items-center gap-7 md:flex">
           {links.map(([label, href]) => (
-            <a className="nav-link text-sm" href={href} key={href}>{label}</a>
+            <a className="nav-link text-sm font-medium" href={href} key={href}>{label}</a>
           ))}
-          <a className="btn btn-secondary !px-4 !py-2 text-xs" href="#contact">Let&apos;s talk <span aria-hidden>↗</span></a>
+          <a className="btn btn-secondary !px-4 !py-2 text-xs font-semibold" href="#contact">Let&apos;s talk <span aria-hidden>↗</span></a>
         </nav>
 
         <button
           type="button"
-          className="rounded-lg border border-slate-200 p-2 text-slate-200 md:hidden"
+          className="rounded-lg border border-slate-200 p-2 text-slate-700 hover:text-cyan hover:border-cyan/40 transition md:hidden"
           aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={open}
           onClick={() => setOpen(!open)}
@@ -51,12 +51,26 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <nav aria-label="Mobile navigation" className="border-t border-slate-200 bg-white px-5 py-4 md:hidden">
+        <nav aria-label="Mobile navigation" className="border-t border-slate-200 bg-white px-5 py-4 space-y-1 shadow-lg md:hidden">
           {links.map(([label, href]) => (
-            <a key={href} href={href} onClick={() => setOpen(false)} className="block rounded-lg px-3 py-3 text-sm text-slate-300 hover:bg-white/5 hover:text-cyan">
+            <a
+              key={href}
+              href={href}
+              onClick={() => setOpen(false)}
+              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-cyan transition"
+            >
               {label}
             </a>
           ))}
+          <div className="pt-2">
+            <a
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className="btn btn-primary w-full text-xs font-semibold"
+            >
+              Let&apos;s talk ↗
+            </a>
+          </div>
         </nav>
       )}
     </header>

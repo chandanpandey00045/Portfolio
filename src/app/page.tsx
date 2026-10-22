@@ -27,7 +27,7 @@ export default function HomePage() {
             ].map(({ icon: Icon, title, subtitle }) => (
               <div className="flex items-start gap-3" key={title}>
                 <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-blue-100 bg-blue-50 text-cyan"><Icon size={17} /></span>
-                <div><p className="text-xs font-semibold text-slate-200 sm:text-sm">{title}</p><p className="mt-1 text-[10px] leading-4 text-slate-500 sm:text-xs">{subtitle}</p></div>
+                <div><p className="text-xs font-semibold text-slate-900 sm:text-sm">{title}</p><p className="mt-1 text-[10px] leading-4 text-slate-600 sm:text-xs">{subtitle}</p></div>
               </div>
             ))}
           </div>

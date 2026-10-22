@@ -1,9 +1,10 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDown, ArrowRight, Download, Github, Linkedin } from "lucide-react";
+import { ArrowDown, ArrowRight, Download, FileText, Github, Linkedin } from "lucide-react";
 import Image from "next/image";
 import TerminalCard from "./TerminalCard";
+import { personalInfo } from "@/data/portfolio";
 
 export default function Hero() {
   const reduceMotion = useReducedMotion();
@@ -28,24 +29,37 @@ export default function Hero() {
             Chandan<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan to-blue-700">Pandey</span><span className="terminal-cursor" aria-hidden="true" />
           </h1>
           <h2 className="mt-6 max-w-xl font-mono text-base leading-7 text-cyan sm:text-lg">
-            Full-Stack Developer <span className="text-slate-600">×</span> Data Engineer
+            Data Engineering Professional <span className="text-slate-400">×</span> SDE 1
           </h2>
-          <p className="mt-5 max-w-xl text-sm leading-7 text-slate-400 sm:text-base">
-            I build end-to-end digital products — from React and Next.js interfaces and Node.js APIs to Python, SQL and Spark data workflows. I care about thoughtful UI, reliable systems and data people can trust.
+          <p className="mt-5 max-w-xl text-sm leading-7 text-slate-600 sm:text-base">
+            1+ year of experience building enterprise ETL pipelines, backend data systems, and cloud data workflows. Enterprise experience delivering high-impact supply chain &amp; inventory solutions for P&amp;G (Procter &amp; Gamble) using Azure Databricks, Delta Lake, and Python.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <a className="btn btn-primary" href="#projects">Explore my work <ArrowRight size={16} /></a>
-            <a className="btn btn-secondary" href="/resume.pdf" download>
-              <Download size={16} /> Download resume
+            <a
+              className="btn btn-secondary"
+              href={personalInfo.resumeDriveUrl || personalInfo.resumeUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FileText size={16} /> View resume
+            </a>
+            <a
+              className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-xs font-semibold text-slate-700 hover:border-cyan/40 hover:text-cyan hover:bg-slate-50 transition"
+              href={personalInfo.resumeUrl}
+              download="Chandan_Pandey_Resume.pdf"
+              title="Download PDF"
+            >
+              <Download size={14} /> PDF
             </a>
           </div>
           <div className="mt-8 flex items-center gap-4 text-sm text-slate-500">
             <span className="mr-1 text-xs">FIND ME</span>
             <a aria-label="GitHub profile" className="rounded-md p-1.5 hover:text-cyan" href="https://github.com/ChandanPandey45" target="_blank" rel="noreferrer"><Github size={18} /></a>
-            <a aria-label="LinkedIn profile" className="rounded-md p-1.5 hover:text-cyan" href="https://www.linkedin.com/" target="_blank" rel="noreferrer"><Linkedin size={18} /></a>
-            <span className="h-4 w-px bg-white/10" />
-            <span className="flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-emerald-400" /> Open to meaningful opportunities</span>
+            <a aria-label="LinkedIn profile" className="rounded-md p-1.5 hover:text-cyan" href="https://www.linkedin.com/in/chandan-pandey-043771251/" target="_blank" rel="noreferrer"><Linkedin size={18} /></a>
+            <span className="h-4 w-px bg-slate-300" />
+            <span className="flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-emerald-500" /> Open to meaningful opportunities</span>
           </div>
         </motion.div>
 
@@ -54,7 +68,7 @@ export default function Hero() {
           <div className="relative w-full max-w-[480px]">
             {/* Top-right specialty pill */}
             <div className="absolute -right-2 -top-4 z-20 rounded-full border border-blue-100 bg-white/95 px-3.5 py-1.5 font-mono text-[11px] font-semibold text-cyan shadow-sm backdrop-blur">
-              <span className="mr-2 inline-block h-2 w-2 rounded-full bg-emerald-500" /> FULL STACK × DATA
+              <span className="mr-2 inline-block h-2 w-2 rounded-full bg-emerald-500" /> DATA ENGINEER × SDE 1
             </div>
 
             {/* Profile Photo in custom styled frame */}
@@ -62,7 +76,7 @@ export default function Hero() {
               <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[22px] bg-slate-100">
                 <Image
                   src="/images/chandanp_img.png"
-                  alt="Chandan Pandey — Full-Stack Developer & Data Engineer"
+                  alt="Chandan Pandey — Data Engineer & SDE 1"
                   fill
                   priority
                   sizes="(max-width: 640px) 90vw, (max-width: 1024px) 440px, 480px"
@@ -74,7 +88,7 @@ export default function Hero() {
                 <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between rounded-xl border border-white/10 bg-slate-950/65 px-3.5 py-2 backdrop-blur-md">
                   <div>
                     <p className="text-xs font-semibold text-white">Chandan Pandey</p>
-                    <p className="font-mono text-[10px] text-slate-300">Full-Stack &amp; Data Engineer</p>
+                    <p className="font-mono text-[10px] text-slate-300">Data Engineer · P&amp;G Collaboration</p>
                   </div>
                   <span className="flex items-center gap-1.5 rounded-full border border-emerald-400/30 bg-emerald-500/20 px-2.5 py-1 font-mono text-[10px] font-medium text-emerald-300">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> Available
@@ -90,10 +104,10 @@ export default function Hero() {
 
             {/* Bottom floating badge */}
             <div className="panel absolute -bottom-5 right-2 hidden items-center gap-3 border border-slate-200 bg-white/95 px-4 py-2.5 shadow-lg backdrop-blur sm:flex">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 font-mono text-xs font-bold text-cyan">01</span>
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 font-mono text-xs font-bold text-cyan">P&amp;G</span>
               <div>
-                <p className="text-xs font-semibold text-slate-900">Data-first mindset</p>
-                <p className="text-[10px] text-slate-500">Quality · Scale · Reliability</p>
+                <p className="text-xs font-semibold text-slate-900">Enterprise Data Impact</p>
+                <p className="text-[10px] text-slate-500">Databricks · Delta Lake · Cloud ETL</p>
               </div>
             </div>
           </div>

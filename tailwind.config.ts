@@ -5,30 +5,27 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#ffffff",
-        panel: "#ffffff",
-        cyan: "#0064e0",
-        electric: "#0457cb",
-        accent: "#0064e0",
-        muted: "#4b4c4f",
-        lime: {
+        brand: {
           50: "#eff6ff",
           100: "#dbeafe",
           200: "#bfdbfe",
-          300: "#93c5fd",
-          400: "#60a5fa",
           500: "#0064e0",
-          600: "#0457cb",
-          700: "#1d4ed8",
-          800: "#1e40af",
-          900: "#1e3a8a"
+          600: "#0052cc",
+          700: "#0747a6",
+          800: "#003882"
+        },
+        cyan: "#0052cc", // Map legacy references to clean royal/cobalt blue
+        slate: {
+          850: "#151e2e"
         }
       },
       fontFamily: {
-        mono: ["var(--font-jetbrains)", "monospace"],
-        sans: ["var(--font-inter)", "Arial", "sans-serif"]
+        mono: ["var(--font-jetbrains)", "SFMono-Regular", "Menlo", "monospace"],
+        sans: ["var(--font-inter)", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"]
       },
-      boxShadow: { glow: "0 8px 28px rgba(0, 100, 224, 0.08)" }
+      boxShadow: {
+        none: "none"
+      }
     }
   },
   plugins: []

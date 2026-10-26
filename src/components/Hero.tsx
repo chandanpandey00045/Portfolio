@@ -1,122 +1,168 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDown, ArrowRight, Download, FileText, Github, Linkedin } from "lucide-react";
+import { ArrowRight, Download, ExternalLink, FileText, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
-import TerminalCard from "./TerminalCard";
 import { personalInfo } from "@/data/portfolio";
 
 export default function Hero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="home" className="relative flex min-h-[760px] items-center overflow-hidden pb-20 pt-32 sm:pt-36">
+    <section id="home" className="relative pt-32 pb-20 sm:pt-36 sm:pb-24 overflow-hidden border-b border-slate-200 bg-white">
+      {/* Crisp, subtle grid texture without color glow or blur orbs */}
       <div className="grid-bg pointer-events-none absolute inset-0" aria-hidden="true" />
-      <div className="pointer-events-none absolute right-[-130px] top-28 h-[430px] w-[430px] rounded-full border border-slate-200 sm:right-[5%]" aria-hidden="true">
-        <div className="absolute inset-8 rounded-full border border-slate-200" />
-        <div className="absolute inset-16 rounded-full border border-slate-200" />
-        <div className="absolute inset-0 rounded-full bg-blue-50 blur-3xl" />
-      </div>
 
-      <div className="container relative z-10 grid items-center gap-14 lg:grid-cols-[1.05fr_.95fr]">
-        <motion.div
-          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-        >
-          <p className="section-label">Hello, world — I&apos;m</p>
-          <h1 className="mt-5 text-5xl font-bold leading-[1.04] tracking-[-.06em] sm:text-6xl lg:text-[76px]">
-            Chandan<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan to-blue-700">Pandey</span><span className="terminal-cursor" aria-hidden="true" />
-          </h1>
-          <h2 className="mt-6 max-w-xl font-mono text-base leading-7 text-cyan sm:text-lg">
-            Data Engineering Professional <span className="text-slate-400">×</span> SDE 1
-          </h2>
-          <p className="mt-5 max-w-xl text-sm leading-7 text-slate-600 sm:text-base">
-            1+ year of experience building enterprise ETL pipelines, backend data systems, and cloud data workflows. Enterprise experience delivering high-impact supply chain &amp; inventory solutions for P&amp;G (Procter &amp; Gamble) using Azure Databricks, Delta Lake, and Python.
-          </p>
-
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a className="btn btn-primary" href="#projects">Explore my work <ArrowRight size={16} /></a>
-            <a
-              className="btn btn-secondary"
-              href={personalInfo.resumeDriveUrl || personalInfo.resumeUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FileText size={16} /> View resume
-            </a>
-            <a
-              className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-xs font-semibold text-slate-700 hover:border-cyan/40 hover:text-cyan hover:bg-slate-50 transition"
-              href={personalInfo.resumeUrl}
-              download="Chandan_Pandey_Resume.pdf"
-              title="Download PDF"
-            >
-              <Download size={14} /> PDF
-            </a>
-          </div>
-          <div className="mt-8 flex items-center gap-4 text-sm text-slate-500">
-            <span className="mr-1 text-xs">FIND ME</span>
-            <a aria-label="GitHub profile" className="rounded-md p-1.5 hover:text-cyan" href="https://github.com/ChandanPandey45" target="_blank" rel="noreferrer"><Github size={18} /></a>
-            <a aria-label="LinkedIn profile" className="rounded-md p-1.5 hover:text-cyan" href="https://www.linkedin.com/in/chandan-pandey-043771251/" target="_blank" rel="noreferrer"><Linkedin size={18} /></a>
-            <span className="h-4 w-px bg-slate-300" />
-            <span className="flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-emerald-500" /> Open to meaningful opportunities</span>
-          </div>
-        </motion.div>
-
-        <div className="relative flex min-h-[520px] items-center justify-center lg:justify-end">
-          <div className="absolute -inset-5 rounded-[2rem] bg-blue-50 blur-3xl" aria-hidden="true" />
-          <div className="relative w-full max-w-[480px]">
-            {/* Top-right specialty pill */}
-            <div className="absolute -right-2 -top-4 z-20 rounded-full border border-blue-100 bg-white/95 px-3.5 py-1.5 font-mono text-[11px] font-semibold text-cyan shadow-sm backdrop-blur">
-              <span className="mr-2 inline-block h-2 w-2 rounded-full bg-emerald-500" /> DATA ENGINEER × SDE 1
+      <div className="container relative z-10">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+          {/* Left Column: Natural, human introduction */}
+          <motion.div
+            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 px-3 py-1 font-mono text-xs font-semibold text-blue-700">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              <span>SDE 1 · Data Engineering &amp; Distributed Systems</span>
             </div>
 
-            {/* Profile Photo in custom styled frame */}
-            <div className="photo-frame panel overflow-hidden p-2.5 bg-white shadow-xl transition-all duration-300">
-              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[22px] bg-slate-100">
-                <Image
-                  src="/images/chandanp_img.png"
-                  alt="Chandan Pandey — Data Engineer & SDE 1"
-                  fill
-                  priority
-                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 440px, 480px"
-                  className="object-cover object-top transition duration-500 hover:scale-[1.02]"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
-                
-                {/* Clean caption badge overlaid on lower photo */}
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between rounded-xl border border-white/10 bg-slate-950/65 px-3.5 py-2 backdrop-blur-md">
-                  <div>
-                    <p className="text-xs font-semibold text-white">Chandan Pandey</p>
-                    <p className="font-mono text-[10px] text-slate-300">Data Engineer · P&amp;G Collaboration</p>
+            <h1 className="mt-5 text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+              Chandan Pandey
+            </h1>
+
+            <p className="mt-3 text-lg sm:text-xl font-medium text-slate-700">
+              Building enterprise data pipelines and high-throughput backend services.
+            </p>
+
+            <p className="mt-4 max-w-xl text-sm sm:text-base leading-relaxed text-slate-600">
+              I am a Software Development Engineer at <strong>Tranzita Systems</strong>, working on enterprise supply chain, inventory, and analytics solutions for <strong>Procter &amp; Gamble (P&amp;G)</strong> using Azure Databricks, Delta Lake, Python, and SQL. I focus on building reliable systems that process massive datasets accurately and run without maintenance headaches.
+            </p>
+
+            {/* Action Buttons */}
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <a className="btn btn-primary" href="#projects">
+                View projects <ArrowRight size={15} />
+              </a>
+              <a
+                className="btn btn-secondary"
+                href={personalInfo.resumeDriveUrl || personalInfo.resumeUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FileText size={15} /> View resume
+              </a>
+              <a
+                className="btn btn-secondary !px-4"
+                href={personalInfo.resumeUrl}
+                download="Chandan_Pandey_Resume.pdf"
+                title="Download PDF"
+              >
+                <Download size={15} /> PDF
+              </a>
+            </div>
+
+            {/* Social & Location Bar */}
+            <div className="mt-8 flex flex-wrap items-center gap-5 text-xs text-slate-600">
+              <div className="flex items-center gap-3">
+                <a
+                  aria-label="GitHub profile"
+                  className="rounded-lg border border-slate-200 p-2 text-slate-700 hover:border-blue-500 hover:text-blue-600 transition-colors"
+                  href={personalInfo.github}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Github size={17} />
+                </a>
+                <a
+                  aria-label="LinkedIn profile"
+                  className="rounded-lg border border-slate-200 p-2 text-slate-700 hover:border-blue-500 hover:text-blue-600 transition-colors"
+                  href={personalInfo.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Linkedin size={17} />
+                </a>
+                <a
+                  aria-label="Send email"
+                  className="rounded-lg border border-slate-200 p-2 text-slate-700 hover:border-blue-500 hover:text-blue-600 transition-colors"
+                  href={`mailto:${personalInfo.email}`}
+                >
+                  <Mail size={17} />
+                </a>
+              </div>
+
+              <div className="h-4 w-px bg-slate-200 hidden sm:block" />
+
+              <span className="flex items-center gap-1.5 text-slate-600">
+                <MapPin size={14} className="text-slate-400" />
+                <span>{personalInfo.location}</span>
+              </span>
+
+              <span className="flex items-center gap-1.5 font-medium text-emerald-700">
+                <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                <span>Open to opportunities</span>
+              </span>
+            </div>
+          </motion.div>
+
+          {/* Right Column: Clean, customized Profile & Verified Snapshot Card */}
+          <motion.div
+            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="flex flex-col gap-4"
+          >
+            {/* Identity & Status Card */}
+            <div className="panel p-5 sm:p-6 border border-slate-200 bg-white">
+              <div className="flex items-center gap-4">
+                <div className="relative h-16 w-16 sm:h-20 sm:w-20 shrink-0 overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
+                  <Image
+                    src="/images/chandanp_img.png"
+                    alt="Chandan Pandey"
+                    fill
+                    priority
+                    sizes="80px"
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div>
+                  <div className="inline-flex items-center gap-1.5 rounded border border-blue-200 bg-blue-50 px-2 py-0.5 font-mono text-[11px] font-semibold text-blue-700">
+                    Tranzita Systems × P&amp;G
                   </div>
-                  <span className="flex items-center gap-1.5 rounded-full border border-emerald-400/30 bg-emerald-500/20 px-2.5 py-1 font-mono text-[10px] font-medium text-emerald-300">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> Available
-                  </span>
+                  <h3 className="mt-1 text-base font-bold text-slate-900">Chandan Pandey</h3>
+                  <p className="text-xs text-slate-600">SDE 1 (Data Engineering)</p>
+                </div>
+              </div>
+
+              {/* Engineering Stats / Real Verified Milestones */}
+              <div className="mt-5 grid grid-cols-2 gap-2.5 border-t border-slate-100 pt-4">
+                <div className="rounded-lg border border-slate-100 bg-slate-50/70 p-3">
+                  <p className="font-mono text-base font-bold text-slate-900">24h → &lt;60m</p>
+                  <p className="mt-0.5 text-[11px] text-slate-600 leading-tight">Supply chain CDL pipeline runtime</p>
+                </div>
+                <div className="rounded-lg border border-slate-100 bg-slate-50/70 p-3">
+                  <p className="font-mono text-base font-bold text-slate-900">-15% Stockouts</p>
+                  <p className="mt-0.5 text-[11px] text-slate-600 leading-tight">Proactive inventory ingestion &amp; alerts</p>
+                </div>
+              </div>
+
+              {/* Active Toolkit Chips */}
+              <div className="mt-4 border-t border-slate-100 pt-3.5">
+                <p className="text-[10px] font-semibold tracking-wider uppercase text-slate-600 font-mono">
+                  Primary Daily Stack
+                </p>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {["Azure Databricks", "Delta Lake", "PySpark", "Python", "SQL Server", "REST APIs"].map((tech) => (
+                    <span className="tag !text-[11px] !py-0.5 !px-2" key={tech}>
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
-
-            {/* Overlapping Terminal Card */}
-            <div className="relative z-10 mx-auto -mt-6 w-[94%] sm:-ml-4 sm:mr-0 sm:w-[92%]">
-              <TerminalCard />
-            </div>
-
-            {/* Bottom floating badge */}
-            <div className="panel absolute -bottom-5 right-2 hidden items-center gap-3 border border-slate-200 bg-white/95 px-4 py-2.5 shadow-lg backdrop-blur sm:flex">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 font-mono text-xs font-bold text-cyan">P&amp;G</span>
-              <div>
-                <p className="text-xs font-semibold text-slate-900">Enterprise Data Impact</p>
-                <p className="text-[10px] text-slate-500">Databricks · Delta Lake · Cloud ETL</p>
-              </div>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-
-      <a href="#about" className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 items-center gap-2 text-[10px] uppercase tracking-[.2em] text-slate-500 hover:text-cyan sm:flex">
-        Scroll to explore <ArrowDown size={13} />
-      </a>
     </section>
   );
 }

@@ -6,28 +6,37 @@ import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import { Code2, Database, Cloud, Workflow } from "lucide-react";
+import { Cloud, Cpu, Database, Server } from "lucide-react";
 
 export default function HomePage() {
   return (
     <>
-      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-cyan focus:px-4 focus:py-3 focus:text-slate-950">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-slate-900 focus:px-4 focus:py-3 focus:text-white"
+      >
         Skip to content
       </a>
       <Navbar />
       <main id="main-content">
         <Hero />
-        <section aria-label="Core capabilities" className="border-y border-slate-200 bg-slate-50/90">
-          <div className="container grid grid-cols-2 gap-4 py-6 sm:grid-cols-4 sm:gap-6">
+        {/* Core Domains Banner - Flat, crisp, shadow-free */}
+        <section aria-label="Core Focus Areas" className="border-b border-slate-200 bg-slate-50/60">
+          <div className="container grid grid-cols-2 gap-4 py-5 sm:grid-cols-4 sm:gap-6">
             {[
-              { icon: Code2, title: "Full-stack apps", subtitle: "UI → API → database" },
-              { icon: Database, title: "Data engineering", subtitle: "Ingest → transform → deliver" },
-              { icon: Cloud, title: "Cloud & DevOps", subtitle: "Deploy → monitor → improve" },
-              { icon: Workflow, title: "System thinking", subtitle: "Reliable end-to-end flows" }
+              { icon: Database, title: "Lakehouse Platforms", subtitle: "Azure Databricks & Delta Lake" },
+              { icon: Server, title: "Enterprise ETL Pipelines", subtitle: "High-scale batch & streaming" },
+              { icon: Cpu, title: "Backend & REST APIs", subtitle: "Low latency & query tuning" },
+              { icon: Cloud, title: "Cloud Architecture", subtitle: "ADLS Gen2, Data Factory & Azure" }
             ].map(({ icon: Icon, title, subtitle }) => (
               <div className="flex items-start gap-3" key={title}>
-                <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-blue-100 bg-blue-50 text-cyan"><Icon size={17} /></span>
-                <div><p className="text-xs font-semibold text-slate-900 sm:text-sm">{title}</p><p className="mt-1 text-[10px] leading-4 text-slate-600 sm:text-xs">{subtitle}</p></div>
+                <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-blue-700">
+                  <Icon size={16} />
+                </span>
+                <div>
+                  <p className="text-xs font-bold text-slate-900 sm:text-sm">{title}</p>
+                  <p className="text-[11px] text-slate-500 mt-0.5">{subtitle}</p>
+                </div>
               </div>
             ))}
           </div>

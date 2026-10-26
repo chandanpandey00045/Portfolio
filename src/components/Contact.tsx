@@ -29,147 +29,144 @@ export default function Contact() {
 
     const recipient = personalInfo.email;
     const subject = encodeURIComponent(`Portfolio Message from ${name}`);
-    const body = encodeURIComponent(`${message}\n\n---\nSender Name: ${name}\nEmail: ${email}`);
-    
+    const body = encodeURIComponent(`${message}\n\n---\nFrom: ${name}\nEmail: ${email}`);
+
     window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
-    setStatus("Opening your email client to send the message...");
+    setStatus("Opening your email client to send...");
   }
 
   return (
-    <section id="contact" className="section border-t border-slate-200 bg-slate-50">
+    <section id="contact" className="section border-b border-slate-200 bg-slate-50/60">
       <div className="container">
         <SectionHeading
-          label="05 / Get in touch"
-          title="Let's build something impactful"
-          description="Have a role, software project, data pipeline challenge, or opportunity to discuss? I'd love to hear from you."
+          label="Get In Touch"
+          title="Let's start a conversation."
+          description="I'm open to discussing engineering roles, distributed data platforms, backend architecture, or collaborative projects."
         />
 
-        <div className="grid gap-6 lg:grid-cols-[.9fr_1.1fr]">
-          {/* Contact Details Card */}
-          <div className="panel flex flex-col justify-between p-6 sm:p-8">
+        <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          {/* Contact Details Card - Flat, zero shadow */}
+          <div className="panel flex flex-col justify-between p-6 sm:p-8 border border-slate-200 bg-white">
             <div>
-              <p className="font-mono text-xs font-semibold text-cyan uppercase tracking-wider">Contact Information</p>
-              <h3 className="mt-2 text-xl font-semibold text-slate-900">Reach out directly</h3>
-              <p className="mt-2.5 text-sm leading-6 text-slate-600">
-                I am actively seeking full-stack engineering and data engineering opportunities. Feel free to contact me via email, phone, or LinkedIn.
+              <h3 className="text-lg font-bold text-slate-900">Direct Contact</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                You can reach me directly via email or phone, or connect through LinkedIn. I respond promptly to engineering inquiries and opportunities.
               </p>
 
-              <div className="mt-7 space-y-4 text-sm">
+              <div className="mt-6 space-y-3">
                 {/* Email */}
-                <div className="flex items-center justify-between rounded-xl border border-slate-200 bg-white p-3">
+                <div className="flex items-center justify-between rounded-lg border border-slate-200 bg-slate-50/70 p-3">
                   <a
-                    className="flex items-center gap-3 text-slate-800 hover:text-cyan font-medium text-xs sm:text-sm"
+                    className="flex items-center gap-3 text-xs sm:text-sm font-semibold text-slate-800 hover:text-blue-600 transition-colors"
                     href={`mailto:${personalInfo.email}`}
                   >
-                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-cyan">
-                      <Mail size={16} />
-                    </span>
-                    {personalInfo.email}
+                    <Mail size={16} className="text-blue-600 shrink-0" />
+                    <span className="truncate">{personalInfo.email}</span>
                   </a>
                   <button
                     type="button"
                     onClick={() => copyText(personalInfo.email, "email")}
-                    className="p-1.5 text-slate-400 hover:text-cyan"
+                    className="p-1 text-slate-400 hover:text-slate-700 transition-colors"
                     aria-label="Copy email"
                   >
-                    {copied === "email" ? <Check size={16} className="text-emerald-500" /> : <Copy size={16} />}
+                    {copied === "email" ? <Check size={15} className="text-emerald-600" /> : <Copy size={15} />}
                   </button>
                 </div>
 
                 {/* Phone */}
-                <div className="flex items-center justify-between rounded-xl border border-slate-200 bg-white p-3">
+                <div className="flex items-center justify-between rounded-lg border border-slate-200 bg-slate-50/70 p-3">
                   <a
-                    className="flex items-center gap-3 text-slate-800 hover:text-cyan font-medium text-xs sm:text-sm"
-                    href={`tel:${personalInfo.phone.replace(/\s+/g, '')}`}
+                    className="flex items-center gap-3 text-xs sm:text-sm font-semibold text-slate-800 hover:text-blue-600 transition-colors"
+                    href={`tel:${personalInfo.phone.replace(/\s+/g, "")}`}
                   >
-                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-cyan">
-                      <Phone size={16} />
-                    </span>
-                    {personalInfo.phone}
+                    <Phone size={16} className="text-blue-600 shrink-0" />
+                    <span>{personalInfo.phone}</span>
                   </a>
                   <button
                     type="button"
                     onClick={() => copyText(personalInfo.phone, "phone")}
-                    className="p-1.5 text-slate-400 hover:text-cyan"
+                    className="p-1 text-slate-400 hover:text-slate-700 transition-colors"
                     aria-label="Copy phone number"
                   >
-                    {copied === "phone" ? <Check size={16} className="text-emerald-500" /> : <Copy size={16} />}
+                    {copied === "phone" ? <Check size={15} className="text-emerald-600" /> : <Copy size={15} />}
                   </button>
                 </div>
 
                 {/* Location */}
-                <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-3 text-xs sm:text-sm font-medium text-slate-700">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-cyan">
-                    <MapPin size={16} />
-                  </span>
-                  {personalInfo.location}
+                <div className="flex items-center gap-3 rounded-lg border border-slate-200 bg-slate-50/70 p-3 text-xs sm:text-sm font-medium text-slate-700">
+                  <MapPin size={16} className="text-blue-600 shrink-0" />
+                  <span>{personalInfo.location}</span>
                 </div>
               </div>
             </div>
 
-            {/* Social Links */}
+            {/* Online Links */}
             <div className="mt-8 border-t border-slate-100 pt-5">
-              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Online Presence</p>
-              <div className="mt-3 flex flex-wrap gap-2.5">
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 font-mono">
+                Profiles &amp; Documents
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
                 <a
-                  className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-medium text-slate-700 hover:border-cyan/40 hover:text-cyan transition"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:border-slate-300 hover:text-blue-600 transition-colors"
                   href={personalInfo.github}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Github size={15} /> GitHub <ArrowUpRight size={13} />
+                  <Github size={14} /> GitHub <ArrowUpRight size={12} />
                 </a>
                 <a
-                  className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-medium text-slate-700 hover:border-cyan/40 hover:text-cyan transition"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:border-slate-300 hover:text-blue-600 transition-colors"
                   href={personalInfo.linkedin}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Linkedin size={15} /> LinkedIn <ArrowUpRight size={13} />
+                  <Linkedin size={14} /> LinkedIn <ArrowUpRight size={12} />
                 </a>
                 <a
-                  className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-medium text-slate-700 hover:border-cyan/40 hover:text-cyan transition"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:border-slate-300 hover:text-blue-600 transition-colors"
                   href={personalInfo.resumeDriveUrl || personalInfo.resumeUrl}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <FileText size={15} /> Resume <ArrowUpRight size={13} />
+                  <FileText size={14} /> Resume <ArrowUpRight size={12} />
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Form Card */}
-          <form onSubmit={handleSubmit} className="panel space-y-4 p-6 sm:p-8">
-            <h3 className="text-lg font-semibold text-slate-900">Send a quick note</h3>
-            <p className="text-xs text-slate-600">Fill out the fields below to start a conversation.</p>
+          {/* Form Card - Flat, zero shadow */}
+          <form onSubmit={handleSubmit} className="panel p-6 sm:p-8 border border-slate-200 bg-white space-y-4">
+            <h3 className="text-lg font-bold text-slate-900">Send a Message</h3>
+            <p className="text-xs sm:text-sm text-slate-600">
+              Leave a note with your project or opportunity details and I will reply as soon as possible.
+            </p>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <label className="block text-xs font-medium text-slate-700">
+              <label className="block text-xs font-semibold text-slate-700">
                 Your Name
                 <input
                   className="mt-1.5"
                   name="name"
-                  placeholder="e.g. Sarah Jenkins"
+                  placeholder="e.g. Alex Miller"
                   autoComplete="name"
                   required
                 />
               </label>
-              <label className="block text-xs font-medium text-slate-700">
+              <label className="block text-xs font-semibold text-slate-700">
                 Your Email
                 <input
                   className="mt-1.5"
                   name="email"
                   type="email"
-                  placeholder="name@company.com"
+                  placeholder="alex@company.com"
                   autoComplete="email"
                   required
                 />
               </label>
             </div>
 
-            <label className="block text-xs font-medium text-slate-700">
-              Your Message
+            <label className="block text-xs font-semibold text-slate-700">
+              Message
               <textarea
                 className="mt-1.5 min-h-36 resize-y"
                 name="message"
@@ -180,10 +177,10 @@ export default function Contact() {
 
             <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
               <button className="btn btn-primary w-full sm:w-auto" type="submit">
-                Send message <Send size={15} />
+                Prepare message <Send size={14} />
               </button>
               {status && (
-                <p aria-live="polite" className="text-xs font-medium text-cyan">
+                <p aria-live="polite" className="text-xs font-semibold text-blue-700">
                   {status}
                 </p>
               )}
